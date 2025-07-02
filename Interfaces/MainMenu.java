@@ -2,6 +2,7 @@
 package Interfaces;
 
 import Interfaces.referenciales.*;
+import Interfaces.maestras.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.function.Supplier;
@@ -28,7 +29,11 @@ public class MainMenu extends JFrame {
         addBoton(panelBotones, "Categorías de Clientes", () -> new ClienteCategoriaUI(this));
         addBoton(panelBotones, "Transporte", () -> new TransporteUI(this));
         addBoton(panelBotones, "Almacenes", () -> new AlmacenUI(this));
-
+        addBoton(panelBotones, "Gestionar Productos", () -> new ProductoUI(this));
+        addBoton(panelBotones, "Clientes", () -> new ClienteUI(this));
+        addBoton(panelBotones, "Oficina", () -> new OficinaUI(this));
+        addBoton(panelBotones, "Proveedor", () -> new ProveedorUI(this));
+        addBoton(panelBotones, "RepDeVentas", () -> new RepresentantesVentasUI(this));
         addBoton(panelBotones, "Salir", () -> {
             System.exit(0);
             return null; // requerido por el tipo Supplier
