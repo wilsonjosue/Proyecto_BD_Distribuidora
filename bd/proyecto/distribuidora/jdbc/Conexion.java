@@ -9,16 +9,16 @@ import java.sql.SQLException;
 public class Conexion {
     private static final String URL = "jdbc:postgresql://localhost:5432/Data_distribuidora01";
     private static final String USER = "postgres";
-    private static final String PASS = "1218";
+    private static final String PASS = "123456";
 
     public static Connection conectar() {
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(URL, USER, PASS);
-            System.out.println("ConexiÃ³n exitosa.");
+            System.out.println("Conexión exitosa.");
             return conn;
         } catch (Exception e) {
-            System.out.println("Error en la conexiÃ³n: " + e.getMessage());
+            System.out.println("Error en la conexión: " + e.getMessage());
             return null;
         }
     }
