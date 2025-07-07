@@ -3,7 +3,9 @@ package Entidades.transacciones;
 
 public class Compra {
     private int comIde;
-    private java.sql.Date comFec;
+    private int comAnio;
+    private int comMes;
+    private int comDia;
     private double comMonTot;
     private int comPrvIde;
     private int comEmpIde;
@@ -11,20 +13,30 @@ public class Compra {
 
     public Compra() {}
 
-    public Compra(int comIde, java.sql.Date comFec, double comMonTot, int comPrvIde, int comEmpIde, String comEstReg) {
+    public Compra(int comIde, int comAnio, int comMes, int comDia,
+                  double comMonTot, int comPrvIde, int comEmpIde, String comEstReg) {
         this.comIde = comIde;
-        this.comFec = comFec;
+        this.comAnio = comAnio;
+        this.comMes = comMes;
+        this.comDia = comDia;
         this.comMonTot = comMonTot;
         this.comPrvIde = comPrvIde;
         this.comEmpIde = comEmpIde;
         this.comEstReg = comEstReg;
     }
 
+    // Getters y setters
     public int getComIde() { return comIde; }
     public void setComIde(int comIde) { this.comIde = comIde; }
 
-    public java.sql.Date getComFec() { return comFec; }
-    public void setComFec(java.sql.Date comFec) { this.comFec = comFec; }
+    public int getComAnio() { return comAnio; }
+    public void setComAnio(int comAnio) { this.comAnio = comAnio; }
+
+    public int getComMes() { return comMes; }
+    public void setComMes(int comMes) { this.comMes = comMes; }
+
+    public int getComDia() { return comDia; }
+    public void setComDia(int comDia) { this.comDia = comDia; }
 
     public double getComMonTot() { return comMonTot; }
     public void setComMonTot(double comMonTot) { this.comMonTot = comMonTot; }

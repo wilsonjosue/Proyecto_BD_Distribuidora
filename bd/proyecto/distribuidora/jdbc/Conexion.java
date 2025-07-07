@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-    private static final String URL = "jdbc:postgresql://localhost:5432/Data_distribuidora01";
+    private static final String URL = "jdbc:postgresql://localhost:5432/DatosDistribuidora";
     private static final String USER = "postgres";
     private static final String PASS = "1218";
 

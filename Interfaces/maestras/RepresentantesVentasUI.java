@@ -195,7 +195,7 @@ public class RepresentantesVentasUI extends JFrame {
             if (exito) {
                 JOptionPane.showMessageDialog(this, "Operación exitosa.");
                 cargarTabla();
-                limpiarFormulario();
+                    limpiarFormulario();
             } else {
                 JOptionPane.showMessageDialog(this, "No se pudo completar la operación.");
             }

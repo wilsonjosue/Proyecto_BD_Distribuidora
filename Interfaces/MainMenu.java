@@ -3,13 +3,21 @@ package Interfaces;
 
 import Interfaces.referenciales.*;
 import Interfaces.maestras.*;
+import Interfaces.transacciones.*;
+import Interfaces.sistema.*;
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
 import java.util.function.Supplier;
+import bd.proyecto.distribuidora.jdbc.Conexion;
+import java.sql.SQLException;
 
 public class MainMenu extends JFrame {
+    
+    private Connection conn;
 
     public MainMenu() {
+        conn = Conexion.conectar();  // crea una única conexión
         setTitle("Menú Principal - Distribuidora");
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,9 +42,25 @@ public class MainMenu extends JFrame {
         addBoton(panelBotones, "Oficina", () -> new OficinaUI(this));
         addBoton(panelBotones, "Proveedor", () -> new ProveedorUI(this));
         addBoton(panelBotones, "RepDeVentas", () -> new RepresentantesVentasUI(this));
+        addBoton(panelBotones, "Compra", () -> new CompraUI(this, conn));
+        addBoton(panelBotones, "Compra Detalle", () -> new CompraDetalleUI(this, conn));
+        addBoton(panelBotones, "Factura", () -> new FacturaUI(this, conn));
+        addBoton(panelBotones, "Factura Detalle", () -> new FacturaDetalleUI(this, conn));
+        addBoton(panelBotones, "Facturacion Pedido", () -> new FacturacionPedidoUI(this, conn));
+        addBoton(panelBotones, "Pago", () -> new PagoUI(this, conn));
+        addBoton(panelBotones, "Pedido Cabecera", () -> new PedidoCabeceraUI(this, conn));
+        addBoton(panelBotones, "Pedido Detalle", () -> new PedidoDetalleUI(this, conn));
+        addBoton(panelBotones, "Transaccion Invetario", () -> new TransaccionInventarioUI(this, conn));
+        addBoton(panelBotones, "Usuario Sistema", () -> new UsuarioSistemaUI(this, conn));
+        addBoton(panelBotones, "Login", () -> new LoginUI(conn));
         addBoton(panelBotones, "Salir", () -> {
+            try {
+                if (conn != null && !conn.isClosed()) conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             System.exit(0);
-            return null; // requerido por el tipo Supplier
+            return null;// requerido por el tipo Supplier
         });
     }
 
