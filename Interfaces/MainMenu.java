@@ -5,12 +5,15 @@ import Interfaces.referenciales.*;
 import Interfaces.maestras.*;
 import Interfaces.transacciones.*;
 import Interfaces.sistema.*;
+import Interfaces.consultas.*;
+import Interfaces.Vistas.*;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
 import java.util.function.Supplier;
 import bd.proyecto.distribuidora.jdbc.Conexion;
 import java.sql.SQLException;
+
 
 public class MainMenu extends JFrame {
     
@@ -53,6 +56,12 @@ public class MainMenu extends JFrame {
         addBoton(panelBotones, "Transaccion Invetario", () -> new TransaccionInventarioUI(this, conn));
         addBoton(panelBotones, "Usuario Sistema", () -> new UsuarioSistemaUI(this, conn));
         addBoton(panelBotones, "Login", () -> new LoginUI(conn));
+        addBoton(panelBotones, "Consulta General", () -> new ConsultaGeneralUI(this, conn));
+        addBoton(panelBotones, "Consulta PedCliRepVentMonto", () -> new ConsultaPedidoClienteRepVentaUI(this, conn));
+        addBoton(panelBotones, "Vista Productos y Categorías", () -> new VistaProductoCategoriaUI(this, conn));
+        addBoton(panelBotones, "Vista Clientes x Categoría", () -> new VistaClienteCategoriaUI(this, conn));
+        addBoton(panelBotones, "Resumen Compras x Proveedor", () -> new ResumenComprasProveedorUI(this, conn));
+        addBoton(panelBotones, "Resumen Ventas x Año", () -> new ResumenVentasAnualesUI(this, conn));
         addBoton(panelBotones, "Salir", () -> {
             try {
                 if (conn != null && !conn.isClosed()) conn.close();
